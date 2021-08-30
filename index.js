@@ -1,4 +1,4 @@
-console.log('Hello, World!')
+import axios from 'axios';
 
 const  refs  = {
     form: document.querySelector('#form'),
@@ -15,8 +15,19 @@ const hndlerSubmit = (event) => {
         .then(response => response.json())
         .then(coctails => renderCollection(coctails.drinks))
         .catch(err => console.log(err))
-
 }
+
+// const hndlerSubmit = (event) => {
+//     event.preventDefault()
+//     const value = refs.input.value;
+//     console.log(value)
+
+//     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+//     .then(result => renderCollection (result.data.drinks))
+// .catch(err => console.log(err))
+    
+        
+// }
 
 function createItem({strDrinkThumb, strDrink}) {  
     article = `<article>
