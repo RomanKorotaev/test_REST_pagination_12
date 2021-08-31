@@ -83,7 +83,6 @@ const gitHandlerSummit = (e) => {
     .catch( (err) => console.log(err))
 }
 
-
 const gitHandlerSummitScroll = (e) => {
     console.log ("Сработала функция gitHandlerSummitScroll")
     e.preventDefault();
@@ -97,6 +96,7 @@ const gitHandlerSummitScroll = (e) => {
 
 refs.searchBtn2.addEventListener('click', gitHandlerSummit)
 refs.more.addEventListener('click', gitHandlerSummit)
+//Ивент scroll вешается не на какой-то DOM- элемент, а на объект  window
 window.addEventListener ('scroll', _.throttle(gitHandlerSummitScroll, 1000) )
 
 
