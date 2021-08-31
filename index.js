@@ -6,31 +6,32 @@ const  refs  = {
     container: document.querySelector('.container')
 }
 
-const hndlerSubmit = (event) => {
-    event.preventDefault()
-    const value = refs.input.value;
-    console.log(value)
-
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
-        .then(response => response.json())
-        .then(coctails => renderCollection(coctails.drinks))
-        .catch(err => console.log(err))
-}
-
+// //  // Пример запроса на бекенд через функцию  fetch
 // const hndlerSubmit = (event) => {
 //     event.preventDefault()
 //     const value = refs.input.value;
 //     console.log(value)
 
-//     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
-//     .then(result => renderCollection (result.data.drinks))
-// .catch(err => console.log(err))
-    
-        
+//     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+//         .then(response => response.json())
+//         .then(coctails => renderCollection(coctails.drinks))
+//         .catch(err => console.log(err))
 // }
+// //  //------------------------------------------------------------------------
+
+ // Пример запроса на бекенд через функцию  библиотеку axios
+const hndlerSubmit = (event) => {
+    event.preventDefault()
+    const value = refs.input.value;
+    console.log(value)
+
+    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+    .then(result => renderCollection (result.data.drinks))
+    .catch(err => console.log(err))        
+}
 
 function createItem({strDrinkThumb, strDrink}) {  
-    article = `<article>
+    const article = `<article>
         <img src= '${strDrinkThumb}'  alr= '${strDrink}'/>
         <p>${strDrink}</p>
         </article>
